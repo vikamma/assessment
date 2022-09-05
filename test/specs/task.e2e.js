@@ -19,3 +19,17 @@ describe("Assessment", function () {
     const cookie = $("div=Reject all");
     await cookie.click();
   });
+
+  //  2. Search for the keyword 'Test Automation Learning'
+  it("searchs 'Test Automation Learning' in goodle search ", async function () {
+    const searchingTerm = "Test Automation Learning";
+
+    // input element with name attribute
+    const googleSearch = await $("input[name='q']");
+    await googleSearch.click();
+    await googleSearch.setValue(searchingTerm);
+    await googleSearch.keys("Enter");
+
+    // check if search result's page title contains searching term
+    await expect(browser).toHaveTitleContaining(searchingTerm);
+  });
