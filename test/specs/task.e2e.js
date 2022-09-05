@@ -56,3 +56,20 @@ describe("Assessment", function () {
     await expect(browser).toHaveUrlContaining("BDD+with+Cucumber");
   });
 
+  //  6.Click on the course with highest rating from the list of search results
+  it("selects highest rating filter", async function () {
+    const selectFilter = await $("select");
+    await selectFilter.click();
+    await selectFilter.selectByVisibleText("Highest Rated");
+
+    // check filter by chosen option's value
+    await expect(selectFilter).toHaveValueContaining("highest-rated");
+  });
+
+  it("clicks on highest rating course", async function () {
+    const udemyPage = await $("h3*=bdd");
+    await udemyPage.click();
+
+    await expect(browser).toHaveTitleContaining("Learn Cucumber BDD with Java");
+  });
+});
