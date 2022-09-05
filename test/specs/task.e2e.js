@@ -44,3 +44,15 @@ describe("Assessment", function () {
     // assert it is Udemy page by url
     await expect(browser).toHaveUrlContaining("udemy");
   });
+
+  //  5. Search for BDD with Cucumber
+  //  on this step issues with Captcha start
+  it("searchs 'BDD with Cucumber' on Udemy course site", async function () {
+    const udemySearch = await $("input[name='q']");
+    await udemySearch.click();
+    await udemySearch.setValue("BDD with Cucumber");
+    await udemySearch.keys("Enter");
+
+    await expect(browser).toHaveUrlContaining("BDD+with+Cucumber");
+  });
+
