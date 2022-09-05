@@ -33,3 +33,14 @@ describe("Assessment", function () {
     // check if search result's page title contains searching term
     await expect(browser).toHaveTitleContaining(searchingTerm);
   });
+
+  //  3. Select the link with Udemy course
+  //  4. Verify if the Udemy site has opened
+  it("selects search on Udemy course site", async function () {
+    // h3 which contains "udemy"
+    const udemyPage = await $("h3*=Udemy");
+    await udemyPage.click();
+
+    // assert it is Udemy page by url
+    await expect(browser).toHaveUrlContaining("udemy");
+  });
